@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:resume/bloc/screen_bloc/bloc.dart';
 
-
 abstract class ScreenEvent extends Equatable {
   const ScreenEvent();
 }

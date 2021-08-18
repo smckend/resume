@@ -10,8 +10,8 @@ class ScreenBloc extends Bloc<ScreenEvent, Screen> {
 
   @override
   Stream<Screen> mapEventToState(
-      ScreenEvent event,
-      ) async* {
+    ScreenEvent event,
+  ) async* {
     if (event is UpdateScreen) {
       yield event.screen;
     }
