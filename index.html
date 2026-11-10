@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sam McKendrick | Senior Infrastructure and Platform Engineer</title>
+<meta name="description" content="Resume of Sam McKendrick, senior infrastructure and platform engineer in Melbourne. Cloud infrastructure, delivery pipelines and observability platforms on AWS, Azure and OCI.">
+<meta property="og:title" content="Sam McKendrick | Senior Infrastructure and Platform Engineer">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #ffffff;
+    --desk: #eef2f3;
+    --ink: #17212b;
+    --muted: #55626e;
+    --rule: #d5dde1;
+    --accent: #0b6e7f;      /* deepened from the teal of the previous resume */
+    --home: #0b6b3a;        /* timeline: years based in Australia */
+    --abroad: #dc3545;      /* timeline: years based in Poland */
+    --tint: #e9f3f5;
+    --serif: "Lora", Georgia, "Times New Roman", serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --paper: #141c22;
+      --desk: #0d1317;
+      --ink: #e6ecef;
+      --muted: #9aa8b2;
+      --rule: #2b3740;
+      --accent: #5cc3d3;
+      --home: #4cc38a;
+      --abroad: #f0707c;
+      --tint: #1b2a31;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; font-size: 16px; }
+  body {
+    margin: 0;
+    background: var(--desk);
+    color: var(--ink);
+    font: 400 1rem/1.5 var(--sans);
+  }
+  a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: 2px; }
+  a:hover { text-decoration-color: var(--accent); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .sheet {
+    max-width: 860px;
+    margin: 32px auto;
+    padding: 48px 56px 56px;
+    background: var(--paper);
+  }
+
+  /* Header */
+  .masthead { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+  h1 { font: 600 2.35rem/1.1 var(--serif); margin: 0; letter-spacing: -0.01em; }
+  .headline { margin: 6px 0 0; color: var(--accent); font-weight: 500; }
+  .contact { list-style: none; margin: 0; padding: 0; font-size: 0.87rem; color: var(--muted); text-align: right; line-height: 1.55; }
+  .contact a { color: var(--ink); }
+
+  /* Career timeline: one bar, eleven years. Each period links to its role. */
+  .timeline { margin: 18px 0 4px; }
+  .timeline .bar { display: flex; gap: 2px; }
+  .timeline .seg {
+    --c: var(--home);
+    display: block; height: 18px; cursor: pointer;
+    background: linear-gradient(var(--c), var(--c)) center / 100% 6px no-repeat;
+    transition: background-size 120ms ease;
+  }
+  .timeline .seg.eu { --c: var(--abroad); }
+  .timeline .seg:hover, .timeline .seg:focus-visible, .timeline .seg.is-active { background-size: 100% 14px; }
+  .timeline .labels { display: flex; gap: 2px; font-size: 0.68rem; color: var(--muted); }
+  .timeline .lab { overflow: hidden; white-space: nowrap; }
+  .timeline .foot { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-top: 4px; }
+  .timeline .caption { font-size: 0.8rem; color: var(--muted); min-height: 1.5em; }
+  .timeline .key { font-size: 0.68rem; color: var(--muted); display: flex; gap: 14px; white-space: nowrap; }
+  .timeline .key i { display: inline-block; width: 8px; height: 8px; margin-right: 4px; background: var(--home); }
+  .timeline .key i.eu { background: var(--abroad); }
+  .role { scroll-margin-top: 24px; transition: background-color 150ms ease, box-shadow 150ms ease; }
+  .role.is-active, .role:target { background: var(--tint); box-shadow: -14px 0 0 var(--tint), 14px 0 0 var(--tint), -17px 0 0 var(--accent); }
+  @media (prefers-reduced-motion: reduce) { .timeline .seg, .role { transition: none; } }
+
+  /* Sections */
+  h2 {
+    font: 600 1.08rem/1.2 var(--serif);
+    color: var(--accent);
+    margin: 22px 0 9px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule);
+  }
+  p { margin: 0; }
+  /* Keep lines near 80 characters on wide screens; the dates sit in the gutter this leaves */
+  .summary, .context, .role ul, .tech, .plain li, .skills { max-width: 41em; }
+
+  .skills { margin: 0; display: grid; grid-template-columns: max-content 1fr; column-gap: 16px; row-gap: 3px; }
+  .skills dt { font-weight: 600; }
+  .skills dd { margin: 0; }
+
+  .role { margin-top: 13px; }
+  .role:first-of-type { margin-top: 0; }
+  .role-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  h3 { font: 600 1rem/1.3 var(--sans); margin: 0; }
+  h3 .title { font-weight: 400; }
+  .when { color: var(--muted); font-size: 0.87rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .context { color: var(--muted); font-size: 0.9rem; margin-top: 1px; }
+  ul { margin: 5px 0 0; padding-left: 1.05em; }
+  li { margin: 2px 0; padding-left: 2px; }
+  li::marker { color: var(--accent); }
+  .tech { margin-top: 4px; font-size: 0.87rem; color: var(--muted); }
+  .tech b { font-weight: 500; color: var(--ink); }
+
+  .plain { list-style: none; padding: 0; margin: 0; }
+  .plain li { margin: 0 0 5px; padding: 0; }
+  .plain .when { margin-left: 6px; }
+
+  .actions { max-width: 860px; margin: 0 auto 40px; padding: 0 8px; text-align: right; }
+  .actions button {
+    font: 500 0.87rem var(--sans); color: var(--ink); background: var(--paper);
+    border: 1px solid var(--rule); padding: 8px 14px; cursor: pointer;
+  }
+  .actions button:hover { border-color: var(--accent); }
+
+
+  /* Tablets: use the full width and give the timeline a finger-sized hit area */
+  @media screen and (max-width: 900px) {
+    .sheet { margin: 0 auto; padding: 40px 36px 44px; }
+    .actions { padding: 20px 16px 0; }
+  }
+  @media screen and (pointer: coarse) {
+    .timeline .seg { height: 36px; }
+    .timeline .labels { margin-top: -6px; }
+  }
+  /* Narrow tablets and phones: stack the header */
+  @media screen and (max-width: 720px) {
+    .masthead { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .contact { text-align: left; }
+  }
+  /* Phones */
+  @media screen and (max-width: 640px) {
+    html { font-size: 15px; }
+    .sheet { padding: 28px 20px 36px; }
+    h1 { font-size: 2rem; }
+    .role-head { flex-direction: column; gap: 0; }
+    .skills { grid-template-columns: 1fr; }
+    .skills dt { margin-top: 6px; }
+    .timeline .seg { min-width: 24px; }
+    .timeline .labels { justify-content: space-between; }
+    .timeline .lab { flex: none !important; }
+    .timeline .lab:not(:first-child):not(:last-child) { display: none; }
+    .timeline .foot { flex-direction: column; gap: 4px; }
+    .actions { text-align: center; }
+  }
+
+  @page { size: A4; margin: 13mm 15mm 12mm; }
+  @media print {
+    :root {
+      color-scheme: light;
+      --paper: #fff; --desk: #fff; --ink: #17212b; --muted: #4a5762;
+      --rule: #cfd8dc; --accent: #0b6e7f; --home: #0b6b3a; --abroad: #dc3545;
+    }
+    html { font-size: 9.8pt; }
+    .summary, .context, .role ul, .tech, .plain li, .skills { max-width: none; }
+    body { line-height: 1.45; background: #fff; }
+    /* Parser-safe header: name first, then one contact line. Single column throughout. */
+    .masthead { flex-direction: column; align-items: flex-start; gap: 3pt; }
+    .contact { text-align: left; display: flex; flex-wrap: wrap; gap: 0 9pt; font-size: 0.82rem; }
+    .contact li:nth-child(2) { flex-basis: 75%; } /* line 1: location and work rights; line 2: email, phone, links */
+    .sheet { max-width: none; margin: 0; padding: 0; }
+    .actions, .timeline .caption { display: none; }
+    h1 { font-size: 23pt; }
+    h2 { margin: 12pt 0 5pt; break-after: avoid; }
+    .role { break-inside: avoid; margin-top: 10pt; }
+    .timeline { margin-top: 8pt; }
+    .timeline .seg { height: 10pt; }
+    .timeline .foot { justify-content: flex-end; }
+    .role.is-active, .role:target { background: none; box-shadow: none; }
+    .timeline .seg, .timeline .key i { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    a { text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+<main class="sheet">
+
+  <header>
+    <div class="masthead">
+      <div>
+        <h1>Sam McKendrick</h1>
+        <p class="headline">Senior Infrastructure and Platform Engineer</p>
+      </div>
+      <ul class="contact">
+        <li>Melbourne, Australia</li>
+        <li>Australian and British citizen, with a work visa for Poland</li>
+        <li><a href="mailto:sam.macca9@gmail.com">sam.macca9@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/samuelmckendrick">linkedin.com/in/samuelmckendrick</a> &nbsp; <a href="https://github.com/smckend">github.com/smckend</a></li>
+      </ul>
+    </div>
+
+    <nav class="timeline" aria-label="Career timeline">
+      <div class="bar">
+        <a class="seg" href="#role-tw1" style="flex:50" data-role="Thoughtworks, QA Consultant to Senior Software Engineer, Mar 2015 to May 2019, Melbourne, Manchester and Düsseldorf" aria-label="Thoughtworks, QA Consultant to Senior Software Engineer, Mar 2015 to May 2019, Melbourne, Manchester and Düsseldorf"></a>
+        <a class="seg eu" href="#role-cs" style="flex:12" data-role="Container Solutions, Cloud Native Consultant, Jul 2019 to Jun 2020, Warsaw" aria-label="Container Solutions, Cloud Native Consultant, Jul 2019 to Jun 2020, Warsaw"></a>
+        <a class="seg eu" href="#role-dodax" style="flex:18" data-role="Dodax, Senior Cloud Engineer, Jul 2020 to Dec 2021, Warsaw" aria-label="Dodax, Senior Cloud Engineer, Jul 2020 to Dec 2021, Warsaw"></a>
+        <a class="seg" href="#role-tw2" style="flex:25" data-role="Thoughtworks, Senior Infrastructure Consultant, Jan 2022 to Jan 2024, Melbourne" aria-label="Thoughtworks, Senior Infrastructure Consultant, Jan 2022 to Jan 2024, Melbourne"></a>
+        <a class="seg" href="#role-bunnings" style="flex:13" data-role="Bunnings, DevOps Engineer, Feb 2024 to Feb 2025, Melbourne" aria-label="Bunnings, DevOps Engineer, Feb 2024 to Feb 2025, Melbourne"></a>
+        <a class="seg" href="#role-tw3" style="flex:14" data-role="Thoughtworks, Senior Infrastructure Engineer, Mar 2025 to Apr 2026, Melbourne" aria-label="Thoughtworks, Senior Infrastructure Engineer, Mar 2025 to Apr 2026, Melbourne"></a>
+        <a class="seg" href="#role-heidi" style="flex:8" data-role="Heidi, Senior DevOps Engineer, Apr 2026 to Nov 2026, Melbourne" aria-label="Heidi, Senior DevOps Engineer, Apr 2026 to Nov 2026, Melbourne"></a>
+      </div>
+      <div class="labels" aria-hidden="true">
+        <span class="lab" style="flex:50">2015</span>
+        <span class="lab" style="flex:12">2019</span>
+        <span class="lab" style="flex:18">2020</span>
+        <span class="lab" style="flex:25">2022</span>
+        <span class="lab" style="flex:13">2024</span>
+        <span class="lab" style="flex:14">2025</span>
+        <span class="lab" style="flex:8">2026</span>
+      </div>
+      <div class="foot">
+        <p class="caption" id="tl-caption" aria-live="polite">Select a period to jump to that role.</p>
+        <p class="key" aria-hidden="true"><span><i></i>Based in Australia</span><span><i class="eu"></i>Based in Poland</span></p>
+      </div>
+    </nav>
+  </header>
+
+  <section aria-labelledby="h-summary">
+    <h2 id="h-summary">Summary</h2>
+    <p class="summary">Senior infrastructure and platform engineer with 11 years across consulting, <span style="white-space: nowrap">e-commerce</span>, retail and health tech in Australia and Europe. I build cloud infrastructure, delivery pipelines and observability platforms on AWS, Azure and OCI, and I coach the teams who run them. At Heidi I led the SRE team and ran the service level objective (SLO) program.</p>
+  </section>
+
+  <section aria-labelledby="h-skills">
+    <h2 id="h-skills">Skills</h2>
+    <dl class="skills">
+      <dt>Platform</dt>
+      <dd>Kubernetes, Docker, Helm, Kustomize, Terraform and OpenTofu, Ansible, HashiCorp Vault</dd>
+      <dt>Cloud</dt>
+      <dd>AWS (EKS, ECS, EC2, S3, IAM, RDS, ALB, WAF), Azure (AKS, Key Vault), OCI (Compute, Vault, VCN), GCP (Cloud Run, Firebase)</dd>
+      <dt>Delivery</dt>
+      <dd>GitHub Actions, GitLab CI, Jenkins, TeamCity, Octopus Deploy, Scalr, monitoring as code, canary and rollback support</dd>
+      <dt>Observability</dt>
+      <dd>Datadog (APM, RUM, logs, SLOs, synthetics), OpenTelemetry, Prometheus, incident.io</dd>
+      <dt>Reliability</dt>
+      <dd>SLOs and error budgets, burn-rate alerting, incident response, on-call design, post-incident reviews, launch readiness</dd>
+      <dt>Languages</dt>
+      <dd>Python, TypeScript and JavaScript, Java, Kotlin, Dart, Shell</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="h-exp">
+    <h2 id="h-exp">Experience</h2>
+
+    <article class="role" id="role-heidi">
+      <div class="role-head">
+        <h3>Heidi <span class="title">| Senior DevOps Engineer, SRE team lead</span></h3>
+        <span class="when">Apr 2026 - Nov 2026</span>
+      </div>
+      <p class="context">Melbourne. Health tech company building AI clinical documentation for clinicians in several countries.</p>
+      <ul>
+        <li>Led a three-person SRE team, setting reliability priorities and reporting progress to engineering leadership.</li>
+        <li>Established SLOs and paging alerts for the product's four most critical user journeys, which gave engineering leaders a shared measure of reliability.</li>
+        <li>Improved incident response with clearer severity guidance, one response guide for engineers and on-call schedules managed as code.</li>
+        <li>Gave product teams self-service monitoring through a pull-request pipeline that seven core repositories now use, and cut observability spend by 30%.</li>
+      </ul>
+      <p class="tech"><b>Tech:</b> Datadog, OpenTelemetry, incident.io, Terraform, GitHub Actions, AWS (EKS), Azure (AKS)</p>
+    </article>
+
+    <article class="role" id="role-tw3">
+      <div class="role-head">
+        <h3>Thoughtworks <span class="title">| Senior Infrastructure Engineer (contract)</span></h3>
+        <span class="when">Mar 2025 - Apr 2026</span>
+      </div>
+      <p class="context">Melbourne. Engagement with an accounting software company.</p>
+      <ul>
+        <li>Migrated DACPAC database deployment workflows from Octopus Deploy and TeamCity to GitHub Actions, so the client could retire its legacy CI/CD tooling.</li>
+      </ul>
+      <p class="tech"><b>Tech:</b> GitHub Actions, Octopus Deploy, TeamCity, SQL Server (DACPAC)</p>
+    </article>
+
+    <article class="role" id="role-bunnings">
+      <div class="role-head">
+        <h3>Bunnings <span class="title">| DevOps Engineer (contract)</span></h3>
+        <span class="when">Feb 2024 - Feb 2025</span>
+      </div>
+      <p class="context">Melbourne. Australia's largest home improvement retailer.</p>
+      <ul>
+        <li>Automated CI/CD flows on Oracle Cloud Infrastructure with Terraform, OpenTofu, GitHub Actions and Scalr.</li>
+        <li>Replaced repetitive manual maintenance tasks with Ansible and Python automation, and proposed an inventory feature upstream to Oracle's OCI Ansible collection.</li>
+      </ul>
+      <p class="tech"><b>Tech:</b> OCI, Terraform and OpenTofu, Ansible, GitHub Actions, Python, Scalr, Docker</p>
+    </article>
+
+    <article class="role" id="role-tw2">
+      <div class="role-head">
+        <h3>Thoughtworks <span class="title">| Senior Infrastructure Consultant</span></h3>
+        <span class="when">Jan 2022 - Jan 2024</span>
+      </div>
+      <p class="context">Melbourne. Client engagements in cloud-native adoption and internal platforms.</p>
+      <ul>
+        <li><b>Airline, team lead (3 months).</b> Led a small team that onboarded Java and JavaScript applications to Datadog APM with OpenTelemetry and built self-service SLO tooling.</li>
+        <li><b>Accounting software company (6 months).</b> Automated migration and onboarding to GitHub, set up GitHub Apps, and built reusable workflows that other teams deploy with.</li>
+        <li><b>Health tech scale-up (1 month).</b> Assessed path to production, team topology and DevOps capability, then presented recommendations to the client.</li>
+      </ul>
+      <p class="tech"><b>Tech:</b> Datadog, OpenTelemetry, GitHub Actions, Python, TypeScript, Java, Docker</p>
+    </article>
+
+    <article class="role" id="role-dodax">
+      <div class="role-head">
+        <h3>Dodax <span class="title">| Senior Cloud Engineer (contract)</span></h3>
+        <span class="when">Jul 2020 - Dec 2021</span>
+      </div>
+      <p class="context">Warsaw, Poland. European e-commerce marketplace.</p>
+      <ul>
+        <li>Helped lead the team that migrated the marketplace's applications to Kubernetes on EKS and adopted modern infrastructure-as-code tooling.</li>
+        <li>Improved observability across the platform with Prometheus and Elasticsearch, and managed secrets with HashiCorp Vault.</li>
+      </ul>
+      <p class="tech"><b>Tech:</b> AWS, Kubernetes (EKS), GitHub Actions, Kustomize, Prometheus, Elasticsearch, HashiCorp Vault, Java, Kotlin</p>
+    </article>
+
+    <article class="role" id="role-cs">
+      <div class="role-head">
+        <h3>Container Solutions <span class="title">| Cloud Native Consultant (contract)</span></h3>
+        <span class="when">Jul 2019 - Jun 2020</span>
+      </div>
+      <p class="context">Warsaw, Poland. Cloud-native consultancy.</p>
+      <ul>
+        <li>Migrated client infrastructure to cloud-native architectures on projects in Germany, Switzerland, the Netherlands and Canada.</li>
+      </ul>
+      <p class="tech"><b>Tech:</b> Kubernetes (self-hosted, EKS, AKS, GKE), Docker, Helm, GitHub Actions, Keycloak</p>
+    </article>
+
+    <article class="role" id="role-tw1">
+      <div class="role-head">
+        <h3>Thoughtworks <span class="title">| QA Consultant to Senior Software Engineer</span></h3>
+        <span class="when">Mar 2015 - May 2019</span>
+      </div>
+      <p class="context">Melbourne, Manchester and Düsseldorf.</p>
+      <ul>
+        <li>Progressed from graduate QA to Senior Software Engineer in four years, on client teams in Australia, the UK and Germany.</li>
+        <li>Taught agile delivery, test automation and pairing on client teams, and contributed fixes upstream to the Pact contract-testing project.</li>
+      </ul>
+      <p class="tech"><b>Tech:</b> Pact, Selenium, Cucumber, Java, JavaScript, Clojure, Kotlin, Jenkins, GoCD</p>
+    </article>
+  </section>
+
+  <section aria-labelledby="h-projects">
+    <h2 id="h-projects">Projects and open source</h2>
+    <ul class="plain">
+      <li><b><a href="https://maszto.org">Maszto</a>, co-founder</b><span class="when">2020 - present</span><br>Platform that lets people in Poland give items to NGOs for a second life. Next.js with serverless functions on Firebase and GCP, deployed through GitLab CI.</li>
+      <li><b>Krunchbet, creator</b><span class="when">2023 - present</span><br>Cross-platform Flutter app for friendly, money-free wagers between friends. In beta on Google Play and the App Store.</li>
+      <li><b>Open source</b><br>Merged contributions to Pact (pact-reference, pact_broker), Cloud Carbon Footprint and the codecentric Keycloak Helm chart.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="h-edu">
+    <h2 id="h-edu">Education and certification</h2>
+    <ul class="plain">
+      <li><b>Bachelor of Business Information Systems</b>, Monash University, 2011 - 2014</li>
+      <li><b>Certified Kubernetes Administrator (CKA)</b>, The Linux Foundation, 2019</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="h-more">
+    <h2 id="h-more">Community and languages</h2>
+    <ul class="plain">
+      <li><b>Orange Sky, volunteer driver</b>, 2024 - present. Free laundry and showers for people experiencing homelessness.</li>
+      <li><b>Languages:</b> English (native), Polish (B1)</li>
+    </ul>
+  </section>
+
+</main>
+
+<div class="actions">
+  <button type="button" onclick="window.print()">Save as PDF</button>
+</div>
+
+<script>
+(function () {
+  var segs = Array.prototype.slice.call(document.querySelectorAll(".timeline .seg"));
+  var caption = document.getElementById("tl-caption");
+  var idle = caption.textContent, pinned = null, quietUntil = 0;
+  var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function roleFor(seg) { return document.getElementById(seg.getAttribute("href").slice(1)); }
+  function show(seg) {
+    segs.forEach(function (s) {
+      var on = s === seg;
+      s.classList.toggle("is-active", on);
+      roleFor(s).classList.toggle("is-active", on);
+    });
+    caption.textContent = seg ? seg.getAttribute("data-role") : idle;
+  }
+  segs.forEach(function (seg) {
+    var role = roleFor(seg);
+    seg.addEventListener("mouseenter", function () { show(seg); });
+    seg.addEventListener("focus", function () { show(seg); });
+    seg.addEventListener("mouseleave", function () { show(pinned); });
+    seg.addEventListener("blur", function () { show(pinned); });
+    seg.addEventListener("click", function (e) {
+      e.preventDefault();
+      pinned = seg; show(seg);
+      quietUntil = Date.now() + 1500; // the page scrolls under the pointer; keep the chosen role lit
+      role.scrollIntoView({ behavior: calm ? "auto" : "smooth", block: "center" });
+    });
+    role.addEventListener("mouseenter", function () { if (Date.now() > quietUntil) show(seg); });
+    role.addEventListener("mouseleave", function () { if (Date.now() > quietUntil) show(pinned); });
+  });
+})();
+</script>
+</body>
+</html>
